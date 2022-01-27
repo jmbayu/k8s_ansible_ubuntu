@@ -1,6 +1,6 @@
 ---
-- import_playbook: users.yml
-- import_playbook: cleanup_previous_kubeadm.yml
-- import_playbook: install-k8s.yml
-- import_playbook: controlplane.yml
-- import_playbook: join-workers.yml
+- import_playbook: 0_users.yml
+- import_playbook: 1_cleanup_previous_kubeadm.yml
+- import_playbook: 2_install-k8s.yml
+- import_playbook: 3_controlplane.yml
+- import_playbook: 4_join-workers.yml
