@@ -16,5 +16,6 @@ jobs:
     - name: test echo
       run: |
         echo "hello"
-        echo "world" 
+        ls -l "*.sh"
+        
 
