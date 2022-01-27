@@ -1,0 +1,17 @@
+- hosts: 'workers, masters'
+  become: yes
+
+  tasks:
+    - name: create the mobile user account
+      user: name=mobile append=yes state=present createhome=yes shell=/bin/bash
+
+    - name: allow 'mobile' to use sudo without needing a password
+      lineinfile:
+        dest: /etc/sudoers
+        line: 'mobile ALL=(ALL) NOPASSWD: ALL'
+        validate: 'visudo -cf %s'
+
+    - name: set up authorized keys for the mobile user
+      authorized_key: user=kube key="{{item}}"
+      with_file:
+        - ~/.ssh/id_rsa.pub

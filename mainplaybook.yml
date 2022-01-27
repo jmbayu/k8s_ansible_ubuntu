@@ -1,0 +1,5 @@
+---
+- import_playbook: users.yml
+- import_playbook: install-k8s.yml
+- import_playbook: controlplane.yml
+- import_playbook: joinworkers.yml
