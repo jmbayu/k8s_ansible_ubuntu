@@ -1,5 +1,5 @@
 [controlplanes]
-master ansible_host=10.1.1.70 ansible_user=ubuntu
+controlplane ansible_host=10.1.1.70 ansible_user=ubuntu
 
 [workers]
 worker1 ansible_host=10.1.1.71 ansible_user=ubuntu

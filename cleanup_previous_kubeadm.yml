@@ -1,0 +1,31 @@
+---
+- hosts: "controlplanes, workers"
+  become: yes
+  tasks:
+  - name: Resetting kubeadm
+    shell: kubeadm reset -f
+    args:
+      executable: /bin/bash
+    register: output
+    
+  - name: Print output of kubeadm reset -f
+    debug:
+      msg: " => {{ output }}"
+
+  - name: Resetting flannel and cni
+    shell: |
+     [[ -d /var/lib/cni     ]] && rm -rf /var/lib/cni/          || echo "was ---------------------" 
+     [[ -d /var/lib/kubelet ]] && rm -rf /var/lib/kubelet/*     || echo "was ---------------------"
+     [[ -d /etc/cni         ]] && rm -rf /etc/cni/              || echo "was ---------------------"
+     [[ $(ip link show | grep flannel.1) ]] && ip link del flannel.1 || echo **************** no_flannel.1
+     [[ $(ip link show | grep docker0) ]] && ip link del docker0 || echo **************** no_docker0
+     [[ $(ip link show | grep cni0) ]] && ip link del cni0 || echo **************** no_cni0
+     iptables -F
+    args:
+      executable: /bin/bash
+
+    register: output
+
+  - name: Print output of Resetting flannel and cni
+    debug:
+      msg: " => {{ output }}"
