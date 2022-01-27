@@ -9,7 +9,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: call python http server...to runnnnn 1
+    - name: call python http server...to runnnnn 
       run: |
         curl -X POST $(ip route show | grep default | awk '{print $3}'):8080 -H "Content-Type: application/json Content-Length: 15" -d '{"foo": "bar"}'
      
