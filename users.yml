@@ -12,6 +12,6 @@
         validate: 'visudo -cf %s'
 
     - name: set up authorized keys for the mobile user
-      authorized_key: user=kube key="{{item}}"
+      authorized_key: user=mobile key="{{item}}"
       with_file:
         - ~/.ssh/id_rsa.pub
