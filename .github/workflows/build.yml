@@ -11,4 +11,4 @@ jobs:
     - uses: actions/checkout@v2
     - name: call python http server to run the command
       run: |
-        curl -vvv -X POST  $(ip route show | grep default | awk '{print $3}'):8080 -H "Content-Type: application/json Content-Length: 15" -d '{"foo": "bar"}'
+        curl -vvv POST  $(ip route show | grep default | awk '{print $3}'):8080 -H "Content-Type: application/json Content-Length: 15" -d '{"foo": "bar"}'
