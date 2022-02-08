@@ -3,7 +3,8 @@
   become: yes
   tasks:
   - name: Resetting kubeadm
-    shell: kubeadm reset -f
+    shell: |
+     [[ -f $(which kubeadm) ]] && kubeadm reset -f
     args:
       executable: /bin/bash
     register: output
