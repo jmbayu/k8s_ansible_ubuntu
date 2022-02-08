@@ -4,7 +4,7 @@
   tasks:
   - name: Resetting kubeadm
     shell: |
-     [[ -f $(which kubeadm) ]] && kubeadm reset -f
+     [[ -f $(which kubeadm) ]] && kubeadm reset -f || echo "kubeadm is not installed"
     args:
       executable: /bin/bash
     register: output
