@@ -1,6 +1,6 @@
 [controlplanes]
-controlplane ansible_host=10.1.1.70 ansible_user=ubuntu
+controlplane ansible_host=10.1.1.70 ansible_user=mobile
 
 [workers]
-worker1 ansible_host=10.1.1.71 ansible_user=ubuntu
-worker2 ansible_host=10.1.1.72 ansible_user=ubuntu
+worker1 ansible_host=10.1.1.71 ansible_user=mobile
+worker2 ansible_host=10.1.1.72 ansible_user=mobile
