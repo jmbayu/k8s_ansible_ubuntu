@@ -1,7 +1,7 @@
-name: buildcluster
+name: manually_build
 
 on: 
-  [workflow_dispatch, push]:
+  workflow_dispatch:
     inputs:
       inputCluster:
         type: choice
