@@ -1,29 +1,31 @@
 name: buildcluster
 
-on: [push, workflow_dispatch]
-  inputs:
-    inputCluster:
-      type: choice
-      description: 'Cluster options [test | int | prod]'
-      required: true
-      options: ['test', 'int', 'prod']
-      default: 'test'
-    inputVersion:
-      description: 'Version ssh image'
-      required: true
-    inputVersionBaseImage:
-      description: 'Version des base image mit dem das ssh image erzeugt wird'
-      required: true
-    inputLatest:
-      type: boolean
-      description: 'Tag with :latest options [false | true]'
-      required: true
-      default: 'false'
-    inputPushToRepo:
-      type: boolean
-      description: 'Push to Harbor repository options [true | false]'
-      required: true
-      default: 'true'
+on: 
+  workflow_dispatch:
+    inputs:
+      inputCluster:
+        type: choice
+        description: 'Cluster options [test | int | prod]'
+        required: true
+        options: ['test', 'int', 'prod']
+        default: 'test'
+      inputVersion:
+        description: 'Version ssh image'
+        required: true
+      inputVersionBaseImage:
+        description: 'Version des base image mit dem das ssh image erzeugt wird'
+        required: true
+      inputLatest:
+        type: boolean
+        description: 'Tag with :latest options [false | true]'
+        required: true
+        default: 'false'
+      inputPushToRepo:
+        type: boolean
+        description: 'Push to Harbor repository options [true | false]'
+        required: true
+        default: 'true'
+  
   
 jobs:
   build:
